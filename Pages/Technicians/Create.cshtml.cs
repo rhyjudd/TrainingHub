@@ -33,10 +33,23 @@ namespace TrainingHub.Pages.Technicians
                 return Page();
             }
 
-            _context.Technician.Add(Technician);
-            await _context.SaveChangesAsync();
+            var emptyTechnician = new Technician();
 
-            return RedirectToPage("./Index");
+            if(await TryUpdateModelAsync<Technician>(
+                emptyTechnician,
+                "technician",   // Prefix for form value.
+                s => s.PNumber, s => s.LastName, s => s.FirstName
+                ))
+
+            {
+                _context.Technician.Add(emptyTechnician);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+
+            
+
+            return null;
         }
     }
 }

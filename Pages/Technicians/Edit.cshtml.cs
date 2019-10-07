@@ -29,7 +29,7 @@ namespace TrainingHub.Pages.Technicians
                 return NotFound();
             }
 
-            Technician = await _context.Technician.FirstOrDefaultAsync(m => m.TechnicianID == id);
+            Technician = await _context.Technician.FindAsync(id);
 
             if (Technician == null)
             {
@@ -38,14 +38,14 @@ namespace TrainingHub.Pages.Technicians
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Technician).State = EntityState.Modified;
+            var ;
 
             try
             {
