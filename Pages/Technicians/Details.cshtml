@@ -1,0 +1,56 @@
+﻿@page "{id:int?}"
+@model TrainingHub.Pages.Technicians.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Technician</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Personnel Number
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Technician.PNumber)
+        </dd>
+        <dt class="col-sm-2">
+            Last Name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Technician.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            First Name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Technician.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayFor(model => model.Technician.Trainings)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Course</th>
+                </tr>
+                @foreach (var item in Model.Technician.Trainings)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem=>item.Course.Description)
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Technician.TechnicianID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
