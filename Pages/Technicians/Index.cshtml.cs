@@ -18,6 +18,12 @@ namespace TrainingHub.Pages.Technicians
             _context = context;
         }
 
+        public string NameSort { get; set; }
+        public string DateSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
+
+
         public IList<Technician> Technician { get;set; }
 
         public async Task OnGetAsync()
