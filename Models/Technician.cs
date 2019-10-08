@@ -13,8 +13,6 @@ namespace TrainingHub.Models
         public string FirstName { get; set; }
 
         public ICollection<Training> Trainings { get; set; }
-
-
-
+        
     }
 }

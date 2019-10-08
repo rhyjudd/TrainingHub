@@ -45,25 +45,19 @@ namespace TrainingHub.Pages.Technicians
                 return Page();
             }
 
-            var ;
+            var technicianToUpdate = await _context.Technician.FindAsync(id);
 
-            try
+            if (await TryUpdateModelAsync<Technician>(
+            technicianToUpdate,
+            "technician",
+            s => s.PNumber, s => s.LastName, s => s.FirstName))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TechnicianExists(Technician.TechnicianID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+
+            return Page();
         }
 
         private bool TechnicianExists(int id)
