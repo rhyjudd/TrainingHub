@@ -2,10 +2,10 @@
 @model TrainingHub.Pages.Technicians.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Technicians";
 }
 
-<h1>Index</h1>
+<h1>Technicians</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -17,7 +17,9 @@
                Personnel Number
             </th>
             <th>
-                Last Name
+                <a asp-page="./Index" asp-route-sorteOrder="@Model.LastNameSort">
+                    @Html.DisplayNameFor(model => model.Technician[0].LastName)
+                </a>
             </th>
             <th>
                 First Name

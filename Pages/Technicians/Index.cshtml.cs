@@ -18,10 +18,13 @@ namespace TrainingHub.Pages.Technicians
             _context = context;
         }
 
-        public string NameSort { get; set; }
+        public string LastNameSort { get; set; }
         public string DateSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
+        public string FirstNameSort { get; set; }
+        public string PNumberSort { get; set; }
+
 
 
         public IList<Technician> Technician { get;set; }
@@ -33,18 +36,32 @@ namespace TrainingHub.Pages.Technicians
 
         public async Task OnGetAsync(string sortOrder) 
         {
-            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            LastNameSort = String.IsNullOrEmpty(sortOrder) ? "Lname_desc" : "Lname_asc";
+            FirstNameSort = String.IsNullOrEmpty(sortOrder) ? "Fname_desc" : "Fname_asc";
+            PNumberSort = sortOrder == "Pnumber" ? "Pnumber_desc" : "Pnumber";
 
             IQueryable<Technician> techniciansIQ = from s in _context.Technicians
                                                    select s;
 
             switch (sortOrder)
             {
-                case "name_desc":
+                case "Lname_desc":
                     techniciansIQ = techniciansIQ.OrderByDescending(s => s.LastName);
                     break;
-                default:
+                case "Lname_asc":
                     techniciansIQ = techniciansIQ.OrderBy(s => s.LastName);
+                    break;
+                case "Fname_desc":
+                    techniciansIQ = techniciansIQ.OrderByDescending(s => s.FirstName);
+                    break;
+                case "Fname_asc":
+                    techniciansIQ = techniciansIQ.OrderBy(s => s.FirstName);
+                    break;
+                case "Pnumber_desc":
+                    techniciansIQ = 
+                
+                default:
+                    
                     break;
             }
 
