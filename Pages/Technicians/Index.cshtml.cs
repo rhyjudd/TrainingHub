@@ -26,9 +26,29 @@ namespace TrainingHub.Pages.Technicians
 
         public IList<Technician> Technician { get;set; }
 
-        public async Task OnGetAsync()
+        //public async Task OnGetAsync()
+        //{
+        //    Technician = await _context.Technician.ToListAsync();
+        //}
+
+        public async Task OnGetAsync(string sortOrder) 
         {
-            Technician = await _context.Technician.ToListAsync();
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            IQueryable<Technician> techniciansIQ = from s in _context.Technicians
+                                                   select s;
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    techniciansIQ = techniciansIQ.OrderByDescending(s => s.LastName);
+                    break;
+                default:
+                    techniciansIQ = techniciansIQ.OrderBy(s => s.LastName);
+                    break;
+            }
+
+            Technician = await techniciansIQ.AsNoTracking().ToListAsync();
         }
     }
 }
