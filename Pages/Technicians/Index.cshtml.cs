@@ -27,29 +27,22 @@ namespace TrainingHub.Pages.Technicians
 
 
 
-        public IList<Technician> Technician { get;set; }
+        public IList<Technician> Technicians { get;set; }
 
-        //public async Task OnGetAsync()
-        //{
-        //    Technician = await _context.Technician.ToListAsync();
-        //}
-
+       
         public async Task OnGetAsync(string sortOrder) 
         {
-            LastNameSort = String.IsNullOrEmpty(sortOrder) ? "Lname_desc" : "Lname_asc";
-            FirstNameSort = String.IsNullOrEmpty(sortOrder) ? "Fname_desc" : "Fname_asc";
-            PNumberSort = sortOrder == "Pnumber" ? "Pnumber_desc" : "Pnumber";
+            LastNameSort = String.IsNullOrEmpty(sortOrder) ? "Lname_desc" : "";
+            FirstNameSort = sortOrder == "Fname_asc" ? "Fname_desc" : "Fname_asc";
+            PNumberSort = sortOrder == "Pnumber_asc" ? "Pnumber_desc" : "Pnumber_asc";
 
-            IQueryable<Technician> techniciansIQ = from s in _context.Technicians
+            IQueryable<Technician> techniciansIQ = from s in _context.Technician
                                                    select s;
 
             switch (sortOrder)
             {
                 case "Lname_desc":
                     techniciansIQ = techniciansIQ.OrderByDescending(s => s.LastName);
-                    break;
-                case "Lname_asc":
-                    techniciansIQ = techniciansIQ.OrderBy(s => s.LastName);
                     break;
                 case "Fname_desc":
                     techniciansIQ = techniciansIQ.OrderByDescending(s => s.FirstName);
@@ -58,14 +51,18 @@ namespace TrainingHub.Pages.Technicians
                     techniciansIQ = techniciansIQ.OrderBy(s => s.FirstName);
                     break;
                 case "Pnumber_desc":
-                    techniciansIQ = 
-                
-                default:
-                    
+                    techniciansIQ = techniciansIQ.OrderByDescending(s => s.PNumber);
                     break;
+                case "Pnumber_asc":
+                    techniciansIQ = techniciansIQ.OrderBy(s => s.PNumber);
+                    break;
+                default :
+                    techniciansIQ = techniciansIQ.OrderBy(s => s.LastName);
+                    break;                   
+                    
             }
 
-            Technician = await techniciansIQ.AsNoTracking().ToListAsync();
+            Technicians = await techniciansIQ.AsNoTracking().ToListAsync();
         }
     }
 }

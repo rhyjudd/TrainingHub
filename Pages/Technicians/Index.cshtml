@@ -14,37 +14,41 @@
     <thead>
         <tr>
             <th>
-               Personnel Number
-            </th>
-            <th>
-                <a asp-page="./Index" asp-route-sorteOrder="@Model.LastNameSort">
-                    @Html.DisplayNameFor(model => model.Technician[0].LastName)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.PNumberSort">
+                    @Html.DisplayNameFor(model => model.Technicians[0].PNumber)
                 </a>
             </th>
             <th>
-                First Name
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastNameSort">
+                    @Html.DisplayNameFor(model => model.Technicians[0].LastName)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.FirstNameSort">
+                    @Html.DisplayNameFor(model => model.Technicians[0].FirstName)
+                </a>
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Technician) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.TechnicianID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.TechnicianID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.TechnicianID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Technicians) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.TechnicianID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.TechnicianID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.TechnicianID">Delete</a>
+                </td>
+            </tr>
+         }
     </tbody>
 </table>
