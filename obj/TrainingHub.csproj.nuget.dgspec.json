@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repos\\TrainingHub\\TrainingHub.csproj": {}
+    "F:\\repos\\TrainingHub\\TrainingHub.csproj": {}
   },
   "projects": {
-    "D:\\repos\\TrainingHub\\TrainingHub.csproj": {
+    "F:\\repos\\TrainingHub\\TrainingHub.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\TrainingHub\\TrainingHub.csproj",
+        "projectUniqueName": "F:\\repos\\TrainingHub\\TrainingHub.csproj",
         "projectName": "TrainingHub",
-        "projectPath": "D:\\repos\\TrainingHub\\TrainingHub.csproj",
-        "packagesPath": "C:\\Users\\rhyju\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\TrainingHub\\obj\\",
+        "projectPath": "F:\\repos\\TrainingHub\\TrainingHub.csproj",
+        "packagesPath": "C:\\Users\\fa0\\.nuget\\packages\\",
+        "outputPath": "F:\\repos\\TrainingHub\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\rhyju\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\fa0\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
@@ -64,10 +66,16 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

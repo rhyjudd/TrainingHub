@@ -51,9 +51,8 @@ namespace TrainingHub.Pages.Technicians
                 return NotFound();
             }
 
-            var technician = await _context.Technician
-                            .AsNoTracking()
-                            .FirstOrDefaultAsync(m => m.TechnicianID == id);
+            var technician = await _context.Technician.FindAsync(id);
+                            
 
             if (technician == null)
             {
