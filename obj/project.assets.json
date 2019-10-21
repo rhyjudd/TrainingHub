@@ -12950,11 +12950,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\repos\\TrainingHub.csproj",
+      "projectUniqueName": "D:\\repos\\TrainingHub\\TrainingHub.csproj",
       "projectName": "TrainingHub",
-      "projectPath": "D:\\repos\\TrainingHub.csproj",
+      "projectPath": "D:\\repos\\TrainingHub\\TrainingHub.csproj",
       "packagesPath": "C:\\Users\\rhyju\\.nuget\\packages\\",
-      "outputPath": "D:\\repos\\obj\\",
+      "outputPath": "D:\\repos\\TrainingHub\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Microsoft\\Xamarin\\NuGet\\",
