@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "F:\\repos\\TrainingHub\\TrainingHub.csproj": {}
+    "D:\\repos\\TrainingHub.csproj": {}
   },
   "projects": {
-    "F:\\repos\\TrainingHub\\TrainingHub.csproj": {
+    "D:\\repos\\TrainingHub.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\repos\\TrainingHub\\TrainingHub.csproj",
+        "projectUniqueName": "D:\\repos\\TrainingHub.csproj",
         "projectName": "TrainingHub",
-        "projectPath": "F:\\repos\\TrainingHub\\TrainingHub.csproj",
-        "packagesPath": "C:\\Users\\fa0\\.nuget\\packages\\",
-        "outputPath": "F:\\repos\\TrainingHub\\obj\\",
+        "projectPath": "D:\\repos\\TrainingHub.csproj",
+        "packagesPath": "C:\\Users\\rhyju\\.nuget\\packages\\",
+        "outputPath": "D:\\repos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "D:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\fa0\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rhyju\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],

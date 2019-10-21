@@ -30,7 +30,7 @@ namespace TrainingHub.Pages.Technicians
         public IList<Technician> Technicians { get;set; }
 
        
-        public async Task OnGetAsync(string sortOrder) 
+        public async Task OnGetAsync(string sortOrder, string searchString) 
         {
             LastNameSort = String.IsNullOrEmpty(sortOrder) ? "Lname_desc" : "";
             FirstNameSort = sortOrder == "Fname_asc" ? "Fname_desc" : "Fname_asc";
@@ -38,6 +38,13 @@ namespace TrainingHub.Pages.Technicians
 
             IQueryable<Technician> techniciansIQ = from s in _context.Technician
                                                    select s;
+            CurrentFilter = searchString;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                techniciansIQ = techniciansIQ.Where(s => s.LastName.Contains(searchString)
+                                       || s.FirstName.Contains(searchString));
+            }
 
             switch (sortOrder)
             {
