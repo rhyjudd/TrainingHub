@@ -26,17 +26,17 @@
     <thead>
         <tr>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.PNumberSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.PNumberSort" asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Technicians[0].PNumber)
                 </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.LastNameSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastNameSort" asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Technicians[0].LastName)
                 </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.FirstNameSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.FirstNameSort" asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Technicians[0].FirstName)
                 </a>
             </th>
@@ -44,7 +44,8 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Technicians) {
+        @foreach (var item in Model.Technicians)
+        {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.PNumber)
@@ -61,6 +62,29 @@
                     <a asp-page="./Delete" asp-route-id="@item.TechnicianID">Delete</a>
                 </td>
             </tr>
-         }
+        }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.Technicians.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Technicians.HasNextPage ? "disabled" : " ";
+}
+
+
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Technicians.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Technicians.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>
+

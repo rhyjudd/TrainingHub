@@ -27,14 +27,25 @@ namespace TrainingHub.Pages.Technicians
 
 
 
-        public IList<Technician> Technicians { get;set; }
+        //public IList<Technician> Technicians { get;set; }
 
+        public PaginatedList<Technician> Technicians { get; set; }
        
-        public async Task OnGetAsync(string sortOrder, string searchString) 
+        public async Task OnGetAsync(string sortOrder, string searchString, string currentFilter, int? pageIndex) 
         {
+            CurrentSort = sortOrder;
             LastNameSort = String.IsNullOrEmpty(sortOrder) ? "Lname_desc" : "";
             FirstNameSort = sortOrder == "Fname_asc" ? "Fname_desc" : "Fname_asc";
             PNumberSort = sortOrder == "Pnumber_asc" ? "Pnumber_desc" : "Pnumber_asc";
+
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
 
             IQueryable<Technician> techniciansIQ = from s in _context.Technician
                                                    select s;
@@ -69,7 +80,9 @@ namespace TrainingHub.Pages.Technicians
                     
             }
 
-            Technicians = await techniciansIQ.AsNoTracking().ToListAsync();
+            int pageSize = 3;
+            
+            Technicians = await PaginatedList<Technician>.CreateAsync(techniciansIQ.AsNoTracking(),pageIndex ?? 1, pageSize);
         }
     }
 }
